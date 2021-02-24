@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Users table
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| nickname           | string     | null: false |
+| email              | string     | null: false, unique true, default: "" |
+| encrypted_password | string     | null: false, default: "" |
+| birth_date         | date       | null: false |
+| first_name         | date       | null: false |
+| first_name_kana    | string     | null: false |
+| family_name        | string     | null: false |
+| family_name_kana   | string     | null: false |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :orders
 
-* Ruby version
+## Items table
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| info         | text       | null: false                    |
+| price        | integer    | null: false                    |
+| category     | integer    | null: false                    |
+| sales_status | integer    | null: false                    |
+| shipping_fee | integer    | null: false                    |
+| prefecture   | integer    | null: false                    |
+| delivery     | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
-* System dependencies
+###  Assosiation
+- belongs_to :user
+- has_one :order
 
-* Configuration
+##  orders table
+| Column   | Type       | Options                        |
+| -------- | ---------- | -------------------------------|
+| user     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
-* Database creation
+###  Assosiation
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
-* Database initialization
+## Addresses table
+| Column | Type              | Options                        |
+| ------ | ----------------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###  Assosiation
+- belongs_to :order
