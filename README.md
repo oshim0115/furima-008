@@ -17,17 +17,17 @@
 - has_many :orders
 
 ## Items table
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| info         | text       | null: false                    |
-| price        | integer    | null: false                    |
-| category     | integer    | null: false                    |
-| sales_status | integer    | null: false                    |
-| shipping_fee | integer    | null: false                    |
-| prefecture   | integer    | null: false                    |
-| delivery     | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| info            | text       | null: false                    |
+| price           | integer    | null: false                    |
+| category_id     | integer    | null: false                    |
+| sales_status_id | integer    | null: false                    |
+| shipping_fee_id | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| delivery_id     | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ###  Assosiation
 - belongs_to :user
